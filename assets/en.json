@@ -20,5 +20,8 @@
   "confirmDelete": "Are you sure you want to delete this airline?",
   "yes": "Yes",
   "no": "No",
-  "information": "Are you sure you want to delete this airplane?"
+  "information": "Are you sure you want to delete this airplane?",
+  "customerListTitle": "Customer List",
+  "flightListTitle": "Flights List",
+  "reservationTitle": "Reservation"
 }

@@ -7,10 +7,6 @@
   "changeLanguage": "Cambiar Idioma",
   "airlineListTitle": "Lista de Aerolíneas",
   "airlineName": "Nombre de la Aerolínea",
-  "headquarters": "Sede",
-  "founded": "Fundada",
-  "fleetSize": "Tamaño de la Flota",
-  "noAirlinesFound": "No se encontraron aerolíneas.",
   "manageAirlinesTitle": "Gestionar Aerolíneas",
   "airplaneType": "Tipo de Avión",
   "numberOfPassengers": "Número de Pasajeros",
@@ -24,6 +20,8 @@
   "confirmDelete": "¿Estás seguro de que deseas eliminar esta aerolínea?",
   "yes": "Sí",
   "no": "No",
-  "information": "¿Estás seguro de que deseas eliminar este avión?"
-
+  "information": "¿Estás seguro de que deseas eliminar este avión?",
+  "customerListTitle": "Lista de Clientes",
+  "flightListTitle": "Lista de Vuelos",
+  "reservationTitle": "Reservación"
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:project/reservation_page.dart';
 import 'LocalizationService.dart';
 import 'AirplaneListPage.dart'; // Ensure you import the AirplaneListPage
 import 'AirplaneFormPage.dart'; // Ensure you import the AirplaneFormPage
-import 'AirlineListPage.dart'; // Ensure you import the AirlineListPage
+import 'AirlineListPage.dart';
+import 'customer_list_page.dart';
+import 'flights_list_page.dart'; // Ensure you import the AirlineListPage
 
 void main() {
   runApp(MyApp());
@@ -62,7 +65,9 @@ class _MyAppState extends State<MyApp> {
           },
         ),
         '/manageAirplanes': (context) => AirplaneListPage(),
-        // Define other routes as needed
+        '/customerList': (context) => CustomerListPage(), // Assuming you have a CustomerListPage
+        '/flightsList': (context) => FlightsListPage(), // Assuming you have a FlightsListPage
+        '/reservation': (context) => ReservationPage(), // Assuming you have a ReservationPage
       },
     );
   }
@@ -101,92 +106,65 @@ class MainPage extends StatelessWidget {
                   LocalizationService.translate('welcomeMessage') ?? 'Welcome to the Airline Management System!',
                   style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.white),
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  child: Text(LocalizationService.translate('viewAirlineList') ?? 'View Airline List'),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => AirlineListPage(),
-                      ),
-                    );
-                  },
-                ),
+
                 SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  child: Text(LocalizationService.translate('addAirplane') ?? 'Add Airplane'),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => AirplaneFormPage(
-                          addOrUpdateAirplane: (airplane) {
-                            // Handle the addition of a new airplane here if needed
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                _buildNavigationButton(context, LocalizationService.translate('manageAirplanes') ?? 'Manage Airplanes', '/manageAirplanes'),
                 SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  child: Text(LocalizationService.translate('manageAirplanes') ?? 'Manage Airplanes'),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => AirplaneListPage(),
-                      ),
-                    );
-                  },
-                ),
+                _buildNavigationButton(context, LocalizationService.translate('customerList') ?? 'Customer List', '/customerList'),
                 SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  child: Text(LocalizationService.translate('changeLanguage') ?? 'Change Language'),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text(LocalizationService.translate('selectLanguage') ?? 'Select Language'),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ListTile(
-                              title: Text('English'),
-                              onTap: () {
-                                Navigator.of(context).pop();
-                                MyApp.setLocale(context, Locale('en', 'US'));
-                              },
-                            ),
-                            ListTile(
-                              title: Text('Spanish'),
-                              onTap: () {
-                                Navigator.of(context).pop();
-                                MyApp.setLocale(context, Locale('es', 'ES'));
-                              },
-                            ),
-                            // Add more languages here
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                _buildNavigationButton(context, LocalizationService.translate('flightsList') ?? 'Flights List', '/flightsList'),
+                SizedBox(height: 10),
+                _buildNavigationButton(context, LocalizationService.translate('reservation') ?? 'Reservation', '/reservation'),
+                SizedBox(height: 10),
+                _buildNavigationButton(context, LocalizationService.translate('changeLanguage') ?? 'Change Language', ''),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildNavigationButton(BuildContext context, String text, String route) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue,
+        padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+        textStyle: TextStyle(fontSize: 18),
+      ),
+      child: Text(text),
+      onPressed: () {
+        if (route.isNotEmpty) {
+          Navigator.of(context).pushNamed(route);
+        } else {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text(LocalizationService.translate('selectLanguage') ?? 'Select Language'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListTile(
+                    title: Text('English'),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      MyApp.setLocale(context, Locale('en', 'US'));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Spanish'),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      MyApp.setLocale(context, Locale('es', 'ES'));
+                    },
+                  ),
+                  // Add more languages here
+                ],
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 
