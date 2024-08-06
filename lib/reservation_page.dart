@@ -14,7 +14,7 @@ class ReservationPage extends StatefulWidget {
 
 class _ReservationPageState extends State<ReservationPage> {
   final List<ReservationItem> reservationItems = [];
-  late List<String> language = ["Reservation Page", "Switch to French", "Reservation ID", "Customer", "Add Reservation", "Reservation", "Delete Reservation", "Start Blank", "Copy Previous", "Customer's ID", "Please enter a customer's ID", "Customer's Name", "Please enter a customer's name", "Customer's Phone", "Please enter a customer's phone", "Flight ID", "Please enter the flight's ID", "Departure City", "Please enter the departure city", "Destination City", "Please enter the destination city", "Flight Departure Date", "Please enter the flight's departure date", "Arrival Date", "Please enter the flight's arrival date", "Reservation Date", "Please enter the reservation's date", "Save Reservation"];
+  late List<String> language = ["Reservation Page", "Switch to French", "Reservation ID", "Customer", "Add Reservation", "Reservation", "Delete Reservation", "Start Blank", "Copy Previous", "Customer's ID", "Please enter a customer's ID", "Customer's Name", "Please enter a customer's name", "Customer's Phone", "Please enter a customer's phone", "Flight ID", "Please enter the flight's ID", "Departure City", "Please enter the departure city", "Destination City", "Please enter the destination city", "Flight Departure Date", "Please enter the flight's departure date", "Arrival Date", "Please enter the flight's arrival date", "Reservation Date", "Please enter the reservation's date", "Save Reservation", "Delete Reservation", "Are you sure you want to delete this reservation?", "Cancel", "Delete", "Reservation registered successfully", "Reservation removed successfully"];
   late ReservationDao dao;
   late bool languageSwitch = true;
 
@@ -38,6 +38,11 @@ class _ReservationPageState extends State<ReservationPage> {
       setState(() {
         reservationItems.add(reservation);
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(language[32]),
+        ),
+      );
     });
   }
 
@@ -47,6 +52,11 @@ class _ReservationPageState extends State<ReservationPage> {
       setState(() {
         reservationItems.removeAt(index);
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(language[33]),
+        ),
+      );
     });
   }
 
@@ -64,10 +74,10 @@ class _ReservationPageState extends State<ReservationPage> {
                 setState(() {
                   if(languageSwitch == true) {
                     languageSwitch = false;
-                    language = ["Page de Réservation", "Change en Anglais", "ID de Réservation", "Client", "Ajouter une Réservation", "Réservation", "Supprimer la Réservation", "Effacer L’entrée", "Copier Précédent", "ID du Client", "Veuillez saisir l’ID du client", "Nom du Client", "Veuillez entrer le nom du client", "Telephone du Client", "Veuillez entrer le téléphone du client", "ID du vol", "Veuillez entrer l’ID du vol", "Ville de Depart", "Veuillez entrer la ville de départ", "Ville de Destination", "Veuillez entrer la ville de destination", "Date de départ du vol", "Veuillez entrer la date de départ du vol", "Date D’arrivée", "Veuillez entrer la date d’arrivée du vol", "Date de Réservation", "Veuillez entrer la date de la réservation", "Enregistrer la réservation"];
+                    language = ["Page de Réservation", "Change en Anglais", "ID de Réservation", "Client", "Ajouter une Réservation", "Réservation", "Supprimer la Réservation", "Effacer L’entrée", "Copier Précédent", "ID du Client", "Veuillez saisir l’ID du client", "Nom du Client", "Veuillez entrer le nom du client", "Telephone du Client", "Veuillez entrer le téléphone du client", "ID du vol", "Veuillez entrer l’ID du vol", "Ville de Depart", "Veuillez entrer la ville de départ", "Ville de Destination", "Veuillez entrer la ville de destination", "Date de départ du vol", "Veuillez entrer la date de départ du vol", "Date D’arrivée", "Veuillez entrer la date d’arrivée du vol", "Date de Réservation", "Veuillez entrer la date de la réservation", "Enregistrer la réservation", "Supprimer la Réservation", "Êtes-vous sûre de vouloir supprimer cette réservation?", "Annuler", "Supprimer", "Réservation enregistrée avec succès", "Réservation supprimée avec succès"];
                   } else {
                     languageSwitch = true;
-                    language = ["Reservation Page", "Switch to French", "Reservation ID", "Customer", "Add Reservation", "Reservation", "Delete Reservation", "Start Blank", "Copy Previous", "Customer's ID", "Please enter a customer's ID", "Customer's Name", "Please enter a customer's name", "Customer's Phone", "Please enter a customer's phone", "Flight ID", "Please enter the flight's ID", "Departure City", "Please enter the departure city", "Destination City", "Please enter the destination city", "Flight Departure Date", "Please enter the flight's departure date", "Arrival Date", "Please enter the flight's arrival date", "Reservation Date", "Please enter the reservation's date", "Save Reservation"];
+                    language = ["Reservation Page", "Switch to French", "Reservation ID", "Customer", "Add Reservation", "Reservation", "Delete Reservation", "Start Blank", "Copy Previous", "Customer's ID", "Please enter a customer's ID", "Customer's Name", "Please enter a customer's name", "Customer's Phone", "Please enter a customer's phone", "Flight ID", "Please enter the flight's ID", "Departure City", "Please enter the departure city", "Destination City", "Please enter the destination city", "Flight Departure Date", "Please enter the flight's departure date", "Arrival Date", "Please enter the flight's arrival date", "Reservation Date", "Please enter the reservation's date", "Save Reservation", "Delete Reservation", "Are you sure you want to delete this reservation?", "Cancel", "Delete", "Reservation registered successfully", "Reservation removed successfully"];
                   }
                 });
               },
