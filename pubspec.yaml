@@ -10,9 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+<<<<<<< HEAD
   shared_preferences: ^2.0.11
   flutter_localizations:
     sdk: flutter
+=======
+
+>>>>>>> origin/revert-2-customer_list
 
   # Remove flutter_gen package
   # Add intl for localization support
@@ -29,10 +33,20 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+<<<<<<< HEAD
   assets:
     - assets/en.json
     - assets/es.json
     - assets/airplane.jpg
+=======
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+>>>>>>> origin/revert-2-customer_list
 
   # You can add custom fonts here if needed
   # fonts:
